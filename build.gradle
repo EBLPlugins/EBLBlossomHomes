@@ -21,6 +21,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modImplementation "dev.codedsakura.blossom:blossom-lib:${project.blossomlib_version}+${mc_version}"
+    compileOnly 'net.luckperms:api:5.4'
 }
 
 processResources {

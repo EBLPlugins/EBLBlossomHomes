@@ -7,6 +7,7 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import dev.codedsakura.blossom.lib.data.ListDataController;
 import dev.codedsakura.blossom.lib.teleport.TeleportUtils;
+import it.eblcraft.blossom.homes.LuckpermsHook;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.MinecraftServer;
@@ -147,15 +148,7 @@ public class HomeController extends ListDataController<PlayerWithHomes> implemen
     }
 
     int getMaxHomes(ServerPlayerEntity player) {
-        UUID uuid = player.getUuid();
-
-        for (PlayerWithHomes playerWithHomes : data) {
-            if (playerWithHomes.uuid.equals(uuid)) {
-                return playerWithHomes.maxHomes;
-            }
-        }
-
-        return BlossomHomes.CONFIG.startHomes;
+        return LuckpermsHook.getMaxHomes(player);
     }
 
     void setMaxHomes(ServerPlayerEntity player, int newMaxHomes) {
