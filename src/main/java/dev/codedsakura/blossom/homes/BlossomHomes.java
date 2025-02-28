@@ -59,7 +59,7 @@ public class BlossomHomes implements ModInitializer {
         homeController = new HomeController();
 
         BlossomLib.addCommand(literal("home")
-                .requires(Permissions.require("blossom.home", true))
+                .requires(Permissions.require("blossom.home", false))
                 .executes(this::runHomeDefault)
                 .then(argument("name", StringArgumentType.string())
                         .suggests(homeController)
@@ -78,13 +78,13 @@ public class BlossomHomes implements ModInitializer {
                                                 .executes(this::addHomeDimension))));
 
         BlossomLib.addCommand(literal("sethome")
-                .requires(Permissions.require("blossom.home.set", true))
+                .requires(Permissions.require("blossom.home.set", false))
                 .executes(this::addHomeDefault)
                 .then(addHomeNamePosDim));
 
 
         BlossomLib.addCommand(literal("delhome")
-                .requires(Permissions.require("blossom.home.remove", true))
+                .requires(Permissions.require("blossom.home.remove", false))
                 .executes(this::removeHomeDefault)
                 .then(argument("name", StringArgumentType.string())
                         .suggests(homeController)
@@ -92,12 +92,12 @@ public class BlossomHomes implements ModInitializer {
 
 
         BlossomLib.addCommand(literal("listhomes")
-                .requires(Permissions.require("blossom.home.list", true))
+                .requires(Permissions.require("blossom.home.list", false))
                 .executes(this::listHomes));
 
 
         BlossomLib.addCommand(literal("homes")
-                .requires(Permissions.require("blossom.homes.list", true))
+                .requires(Permissions.require("blossom.homes.list", false))
                 .executes(this::listHomes)
                 .then(literal("list")
                         .requires(Permissions.require("blossom.homes.list", true))
